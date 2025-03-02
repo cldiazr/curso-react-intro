@@ -1,11 +1,11 @@
 import React from 'react'
 import './TodoSearch.css'
 
-function TodoSearch () {
+function TodoSearch ({
+  search,
+  setSerch
+}) {
 
-  const [search , setSerch] = React.useState('') 
-
-  console.log('Escribiste:' + search)
     return(
         <input 
           className="TodoSearch" 
