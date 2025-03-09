@@ -1,6 +1,9 @@
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
+import { TodosLoading } from '../TodosLoading';
+import { TodosError } from '../TodosError';
+import { EmptyTodos } from '../EmptyTodos';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 import React from 'react';
@@ -28,9 +31,15 @@ function AppUI ({
             />
             
             <TodoList>
-                {loading && <p>Estamos Cargando...</p>}
-                {error && <p>Estamos presentando un error</p>}
-                {(!loading && totalTodos === 0) && <p>No tienes TODOS creados</p>}
+                {loading && (
+                    <>
+                    <TodosLoading/>
+                    <TodosLoading/>
+                    <TodosLoading/>
+                    </>
+                )}
+                {error && <TodosError/>}
+                {(!loading && totalTodos === 0) && <EmptyTodos/>}
                 {searchedTodos.map(todo=>(
                     <TodoItem 
                     key={todo.text} 
