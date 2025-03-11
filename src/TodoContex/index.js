@@ -10,7 +10,7 @@ function TodoProvider ({children}){
         error } = useLocalStorage('TODOS_V1', [])
     
       const completedTodo = todos.filter( todo => !!todo.completed).length
-    
+
       const totalTodos = todos.length
     
       const [search , setSerch] = React.useState('') 
