@@ -14,6 +14,8 @@ function TodoProvider ({children}){
       const totalTodos = todos.length
     
       const [search , setSerch] = React.useState('') 
+
+      const [openModal , setOpenModal] = React.useState(false) 
     
       const completeTodo = (text) => {
         const newTodos = [...todos]
@@ -39,6 +41,15 @@ function TodoProvider ({children}){
     
         return todoText.includes(searchText)
       })
+      
+      const addTodo = (text) => {
+        const newTodos = [...todos]
+        newTodos.push({
+          text,
+          completed: false
+        })
+        saveTodos(newTodos)
+      }
 
     return(
         <TodoContext.Provider value={{
@@ -50,7 +61,10 @@ function TodoProvider ({children}){
             search,
             deleteTodo,
             loading,
-            error
+            error,
+            openModal,
+            setOpenModal,
+            addTodo
         }}>
             { children }
         </TodoContext.Provider>
