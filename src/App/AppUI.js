@@ -10,6 +10,7 @@ import React from 'react';
 import { TodoContext } from '../TodoContex';
 import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm'
+import { FooterApp } from '../FooterApp'
 
 function AppUI () {
     
@@ -51,6 +52,7 @@ function AppUI () {
                 <Modal>
                     <TodoForm/>
                 </Modal>)}
+            <FooterApp/>
         </React.Fragment>
     )
 }

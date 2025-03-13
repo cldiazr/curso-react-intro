@@ -1,0 +1,12 @@
+footer {
+    background-color: #f0f0f0; /* Un gris claro o el color de fondo de tu página */
+    padding: 20px;
+    text-align: center;
+    font-size: 0.8em;
+    color: #666; /* Un gris más oscuro para el texto */
+    border-top: 1px solid #ddd; /* Una línea sutil para separar el footer del contenido principal */
+  }
+  
+  footer p {
+    margin: 0;
+  }
