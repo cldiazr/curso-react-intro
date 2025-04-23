@@ -25,6 +25,10 @@ function TodoProvider ({children}){
         newTodos[todoIndex].completed = true
         saveTodos(newTodos)
       }
+
+      const editTodo = (text) => {
+        console.log('Editar: ' + text)
+      }
     
       const deleteTodo = (text) => {
         const newTodos = [...todos]
@@ -60,6 +64,7 @@ function TodoProvider ({children}){
             completedTodo,
             search,
             deleteTodo,
+            editTodo,
             loading,
             error,
             openModal,

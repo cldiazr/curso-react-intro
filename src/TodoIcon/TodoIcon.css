@@ -24,6 +24,12 @@
     right: 0;
 }
 
+.Icon-container-edit {
+    position: absolute;
+    top: 48px;
+    right: 0;
+}
+
 .Icon-container-delete:hover {
     color: red;
 }
@@ -31,6 +37,11 @@
 .Icon-svg {
     width: 24px;
     height: 24px;
+}
+
+.Icon-svg-edit {
+    width: 36px;
+    height: 36px;
 }
 
 .Icon-container-delete:hover .Icon-svg {
