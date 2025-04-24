@@ -53,7 +53,8 @@ function AppUI () {
             {openModal && (
                 <Modal>
                     <TodoForm/>
-                </Modal>)}
+                </Modal>
+            )}
             <FooterApp/>
         </React.Fragment>
     )

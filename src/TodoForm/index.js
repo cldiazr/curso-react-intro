@@ -6,19 +6,27 @@ function TodoForm () {
     const {
         setOpenModal,
         addTodo,
+        setOpenModalEdit,
+        openModalEdit,
+        valueTodoEdit,
+        setValueTodoEdit
     } = React.useContext(TodoContext)
 
-    const [newTodoValue , setNewTodoValue] = React.useState('')
+    const [newTodoValue , setNewTodoValue] = React.useState(valueTodoEdit)
 
     const onSubmit = (event) => {
         event.preventDefault()
         addTodo(newTodoValue)
         setOpenModal(false)
+        setOpenModalEdit(false)
+        setValueTodoEdit('')
     }
 
     const onCancel = (event) => {
         event.preventDefault()
         setOpenModal(false)
+        setOpenModalEdit(false)
+        setValueTodoEdit('')
     }
 
     const onChange = (event) => {
@@ -27,7 +35,10 @@ function TodoForm () {
 
     return(
         <form onSubmit={ onSubmit}>
-            <label>Escribe tu nuevo TODO</label>
+            { !openModalEdit ? 
+            <label>Escribe tu nuevo TODO</label>:
+            <label>Edita el TODO</label>
+            }
             <textarea 
                 placeholder="Escribe TODO pendiente..."
                 value={newTodoValue}

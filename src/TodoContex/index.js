@@ -16,6 +16,10 @@ function TodoProvider ({children}){
       const [search , setSerch] = React.useState('') 
 
       const [openModal , setOpenModal] = React.useState(false) 
+
+      const [openModalEdit , setOpenModalEdit] = React.useState(false) 
+
+      const [valueTodoEdit , setValueTodoEdit] = React.useState('')
     
       const completeTodo = (text) => {
         const newTodos = [...todos]
@@ -28,6 +32,9 @@ function TodoProvider ({children}){
 
       const editTodo = (text) => {
         console.log('Editar: ' + text)
+        setValueTodoEdit(text)
+        setOpenModal(state => !state)
+        setOpenModalEdit(state => !state)
       }
     
       const deleteTodo = (text) => {
@@ -69,7 +76,11 @@ function TodoProvider ({children}){
             error,
             openModal,
             setOpenModal,
-            addTodo
+            addTodo,
+            openModalEdit,
+            setOpenModalEdit,
+            valueTodoEdit,
+            setValueTodoEdit
         }}>
             { children }
         </TodoContext.Provider>
