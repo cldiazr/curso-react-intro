@@ -9,17 +9,23 @@ function TodoForm () {
         setOpenModalEdit,
         openModalEdit,
         valueTodoEdit,
-        setValueTodoEdit
+        setValueTodoEdit,
+        editTodo
     } = React.useContext(TodoContext)
 
     const [newTodoValue , setNewTodoValue] = React.useState(valueTodoEdit)
 
     const onSubmit = (event) => {
         event.preventDefault()
-        addTodo(newTodoValue)
-        setOpenModal(false)
-        setOpenModalEdit(false)
-        setValueTodoEdit('')
+
+        if (!openModalEdit) {
+            addTodo(newTodoValue)
+            setOpenModal(false)
+            setValueTodoEdit('')
+        } else {
+            editTodo(newTodoValue)
+            setValueTodoEdit('')
+        }
     }
 
     const onCancel = (event) => {
@@ -53,7 +59,7 @@ function TodoForm () {
                 <button 
                     type="submit"
                     className="TodoForm-button TodoForm-button--add"
-                >Agregar</button>
+                >{!openModalEdit ? 'Agregar' : 'Editar'}</button>
             </div>
         </form>
     )

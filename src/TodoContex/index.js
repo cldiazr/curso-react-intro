@@ -26,13 +26,19 @@ function TodoProvider ({children}){
         const todoIndex = newTodos.findIndex(
           (todo) => todo.text === text
         )
-        newTodos[todoIndex].completed = true
+        newTodos[todoIndex].completed = !newTodos[todoIndex].completed
         saveTodos(newTodos)
       }
 
       const editTodo = (text) => {
-        console.log('Editar: ' + text)
-        setValueTodoEdit(text)
+        if (openModalEdit) {
+          const newTodos = [...todos]
+          const todoIndex = newTodos.findIndex(
+            (todo) => todo.text === valueTodoEdit
+          )
+          newTodos[todoIndex].text = text
+          saveTodos(newTodos)
+        } else setValueTodoEdit(text)
         setOpenModal(state => !state)
         setOpenModalEdit(state => !state)
       }
