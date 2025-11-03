@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "./useApi";
 
 const TodoContext = React.createContext()
 
@@ -7,7 +7,7 @@ function TodoProvider ({children}){
     const { item :todos, 
         saveItem : saveTodos,
         loading,
-        error } = useLocalStorage('TODOS_V1', [])
+        error } = useLocalStorage()
     
       const completedTodo = todos.filter( todo => !!todo.completed).length
 
