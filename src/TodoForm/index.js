@@ -42,8 +42,8 @@ function TodoForm () {
     return(
         <form onSubmit={ onSubmit}>
             { !openModalEdit ? 
-            <label>Escribe tu nuevo TODO</label>:
-            <label>Edita el TODO</label>
+            <label>Escribe tu nuevo Pendiente</label>:
+            <label>Edita el Pendiente</label>
             }
             <textarea 
                 placeholder="Escribe un Pendiente..."
