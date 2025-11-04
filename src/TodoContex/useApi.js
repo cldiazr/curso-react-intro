@@ -34,18 +34,56 @@ function useLocalStorage (){
     )
     
   
-    const saveItem = async (newItem) => {
+    const saveItem = async (newItem, todo) => {
+      try{
 
-        await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newItem)
+        const respuesta = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(todo)
         });
+
+        if (respuesta.ok){
+
+          todo = await respuesta.json();
+          newItem.push(todo)
+          setItem(newItem)
+
+        } else {
+          console.error('Falló al guardar la tarea en la API');
+        }
+
+      } catch{
+        console.error('Falló al guardar la tarea en la API');
+      }
+
+    }
+
+    const editItem = async (newItem, id, editItem) => {
+
+      try {
+
+        const respuesta = await fetch(`${API_URL}/${id}`, { 
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(editItem)
+        });
+
+        if (respuesta.ok){
+
+          setItem(newItem)
+
+        } else {
+          console.error('Falló al guardar la tarea en la API');
+        }
+
+      } catch {
+
+      }
         
-        setItem(newItem)
     }
   
-    return {item , saveItem , loading, error}
+    return {item , saveItem , editItem , loading, error}
   
   }
 

@@ -6,6 +6,7 @@ const TodoContext = React.createContext()
 function TodoProvider ({children}){
     const { item :todos, 
         saveItem : saveTodos,
+        editItem : editTodos,
         loading,
         error } = useLocalStorage()
     
@@ -27,7 +28,9 @@ function TodoProvider ({children}){
           (todo) => todo.text === text
         )
         newTodos[todoIndex].completed = !newTodos[todoIndex].completed
-        saveTodos(newTodos)
+        const id = newTodos[todoIndex].id
+        const updateComplete = {completed : newTodos[todoIndex].completed}
+        editTodos(newTodos, id, updateComplete)
       }
 
       const editTodo = (text) => {
@@ -61,11 +64,8 @@ function TodoProvider ({children}){
       
       const addTodo = (text) => {
         const newTodos = [...todos]
-        newTodos.push({
-          text,
-          completed: false
-        })
-        saveTodos(newTodos)
+        let todo = {text, completed: false}
+        saveTodos(newTodos, todo)
       }
 
     return(
