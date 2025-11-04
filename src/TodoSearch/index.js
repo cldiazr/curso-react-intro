@@ -10,7 +10,7 @@ function TodoSearch () {
     return(
         <input 
           className="TodoSearch" 
-          placeholder="Buscar TODO"
+          placeholder="Buscar Pendiente"
           value={search}
           onChange={(event) => {
             setSerch(event.target.value)

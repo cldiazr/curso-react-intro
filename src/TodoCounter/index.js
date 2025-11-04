@@ -19,7 +19,7 @@ function TodoCounter () {
     return(
       <h1 className='TodoCounter'>
         {completeTodos() ?
-          "Felicitaciones haz completado los Todos"
+          "Felicitaciones haz completado los Pendientes"
           :
           <>Haz completado 
           <span> { completedTodo } </span>

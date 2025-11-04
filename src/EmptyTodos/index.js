@@ -3,7 +3,7 @@ import React from 'react'
 function EmptyTodos () {
 
     return(
-        <p>No tienes TODOs creados</p>
+        <p>No tienes Pendientes creados</p>
     )
   }
 

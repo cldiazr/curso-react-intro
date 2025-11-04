@@ -46,7 +46,7 @@ function TodoForm () {
             <label>Edita el TODO</label>
             }
             <textarea 
-                placeholder="Escribe TODO pendiente..."
+                placeholder="Escribe un Pendiente..."
                 value={newTodoValue}
                 onChange={onChange}
             />
