@@ -7,6 +7,7 @@ function TodoProvider ({children}){
     const { item :todos, 
         saveItem : saveTodos,
         editItem : editTodos,
+        deleteItem : deleteTodos,
         loading,
         error } = useLocalStorage()
     
@@ -40,19 +41,24 @@ function TodoProvider ({children}){
             (todo) => todo.text === valueTodoEdit
           )
           newTodos[todoIndex].text = text
-          saveTodos(newTodos)
+          const id = newTodos[todoIndex].id
+          const updateComplete = {text : newTodos[todoIndex].text}
+          editTodos(newTodos, id, updateComplete)
         } else setValueTodoEdit(text)
         setOpenModal(state => !state)
         setOpenModalEdit(state => !state)
       }
     
       const deleteTodo = (text) => {
+
         const newTodos = [...todos]
         const todoIndex = newTodos.findIndex(
           (todo) => todo.text === text
         )
+        const id = newTodos[todoIndex].id
         newTodos.splice(todoIndex, 1)
-        saveTodos(newTodos)
+        deleteTodos(id, newTodos)
+
       }
     
       const searchedTodos = todos.filter( todo => {

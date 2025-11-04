@@ -54,7 +54,7 @@ function useLocalStorage (){
         }
 
       } catch{
-        console.error('Falló al guardar la tarea en la API');
+        console.error('Error de red:', error);
       }
 
     }
@@ -74,16 +74,37 @@ function useLocalStorage (){
           setItem(newItem)
 
         } else {
-          console.error('Falló al guardar la tarea en la API');
+          console.error('Falló al editar la tarea en la API');
         }
 
       } catch {
-
+        console.error('Error de red:', error);
       }
         
     }
+
+    const deleteItem = async function borrarTarea(id, newItem) {
+
+      try{
+
+        const respuesta = await fetch(`${API_URL}/${id}`, {
+          method: 'DELETE'
+        });
+
+        if (respuesta.ok){
+
+          setItem(newItem)
+
+        } else {
+          console.error('Falló al eliminar la tarea en la API');
+        }
+
+      } catch {
+        console.error('Error de red:', error);
+      }
+    }
   
-    return {item , saveItem , editItem , loading, error}
+    return {item , saveItem , editItem , deleteItem , loading, error}
   
   }
 
